@@ -8,10 +8,15 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const sequelize = new Sequelize({
-    dialect: 'sqlite',
-    storage: 'database.db'
-});
+// const sequelize = new Sequelize({
+//     dialect: 'sqlite',
+//     storage: 'database.db'
+// });
+
+const sequelize = new Sequelize('dbanonymous', 'root', '', {
+    host: 'localhost',
+    dialect: 'mysql'
+  });
 
 const Project = sequelize.define('project', {
     projectName: Sequelize.STRING,
